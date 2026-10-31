@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free Unit Converter - Length, Weight & Temperature | Nexora Tools</title>
+  <meta name="description" content="Convert units instantly for length, mass/weight, and temperature. Real-time metric to imperial calculations with complete conversion table reference.">
+  <link rel="canonical" href="https://nexoraworldonline.online/tools/unit-converter.html">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Online Unit Converter | Nexora Tools">
+  <meta property="og:description" content="Instant bidirectional unit conversions for length, mass, and temperature. 100% private in-browser utility.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nexoraworldonline.online/tools/unit-converter.html">
+  <meta property="og:site_name" content="Nexora Tools">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23070A13'/><path d='M8 24V8l8 8-8 8zm8 0V8l8 8-8 8z' fill='%238B5CF6'/></svg>">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+
+  <style>
+    .category-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.25rem;
+    }
+    .category-tab {
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.25rem;
+      border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+      cursor: pointer;
+      position: relative;
+      transition: color var(--transition);
+      white-space: nowrap;
+    }
+    .category-tab.active {
+      color: var(--accent-violet);
+    }
+    .category-tab.active::after {
+      content: '';
+      position: absolute;
+      bottom: -0.25rem;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--accent-violet);
+    }
+    .swap-btn-icon {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-primary);
+      transition: all var(--transition);
+      margin: auto;
+    }
+    .swap-btn-icon:hover {
+      background: var(--accent-violet);
+      color: #FFFFFF;
+      border-color: var(--accent-violet);
+      transform: rotate(180deg);
+    }
+  </style>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Unit Converter - Nexora Tools",
+        "url": "https://nexoraworldonline.online/tools/unit-converter.html",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "All",
+        "browserRequirements": "Requires JavaScript. Requires HTML5.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "description": "Convert metric and imperial units across length, weight/mass, and temperature instantly in your web browser."
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How does Celsius convert to Fahrenheit?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The mathematical formula to convert Celsius to Fahrenheit is: (°C × 9/5) + 32 = °F. To convert backwards from Fahrenheit to Celsius: (°F − 32) × 5/9 = °C."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How many pounds are in one kilogram?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "One international avoirdupois kilogram equals approximately 2.20462 pounds (lbs)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are conversions calculated locally or over the cloud?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Every conversion is performed instantaneously within your web browser using precision floating-point arithmetic. No network latency, and no data tracking."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="site-nav">
+      <a href="../index.html" class="brand-logo" aria-label="Nexora Tools Home">
+        <svg class="brand-logo-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="8" fill="url(#brand-grad-unit)"/>
+          <path d="M7 23L16 9L25 23H20L16 16.5L12 23H7Z" fill="#FFFFFF"/>
+          <defs>
+            <linearGradient id="brand-grad-unit" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#8B5CF6"/>
+              <stop offset="1" stop-color="#06B6D4"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Nexora<span class="gradient-text">Tools</span></span>
+      </a>
+
+      <nav class="nav-links" id="nav-menu">
+        <a href="../index.html" class="nav-link">Home</a>
+        <a href="index.html" class="nav-link active">All Tools</a>
+        <a href="../about.html" class="nav-link">About</a>
+        <a href="../contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="tool-page-container">
+    <!-- Breadcrumbs -->
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span>/</span>
+      <a href="index.html">Tools</a>
+      <span>/</span>
+      <span aria-current="page">Unit Converter</span>
+    </nav>
+
+    <!-- Top Ad Slot -->
+    <!-- Ad Network Integration: Paste your top responsive display ad script below -->
+    <div class="ad-slot" data-slot="top" aria-label="Advertisement"></div>
+
+    <!-- Tool Header -->
+    <div class="tool-header">
+      <div class="tool-badge">Measurement Conversion</div>
+      <h1 class="tool-title">Universal Unit Converter</h1>
+      <p class="tool-subtitle">Convert metric and imperial units across length, weight, and temperature instantly with formula displays and full conversion tables.</p>
+    </div>
+
+    <!-- Main Tool Workspace Card -->
+    <div class="tool-workspace">
+      <!-- Category Tabs -->
+      <div class="category-tabs" role="tablist">
+        <button class="category-tab active" data-category="length" role="tab">Length & Distance</button>
+        <button class="category-tab" data-category="weight" role="tab">Weight & Mass</button>
+        <button class="category-tab" data-category="temperature" role="tab">Temperature</button>
+      </div>
+
+      <!-- Conversion Interactive Row -->
+      <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin-bottom: 1.5rem;">
+        <!-- Left Side (From) -->
+        <div>
+          <label for="from-input" class="form-label">From</label>
+          <input type="number" id="from-input" class="form-input" style="font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem;" value="1" step="any">
+          <select id="from-unit" class="form-input"></select>
+        </div>
+
+        <!-- Middle Swap Button -->
+        <div style="display: flex; align-items: center; justify-content: center; padding-top: 1.5rem;">
+          <button id="swap-units-btn" class="swap-btn-icon" title="Swap Units" aria-label="Swap units">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m7 16 5 5 5-5"/><path d="m17 8-5-5-5 5"/></svg>
+          </button>
+        </div>
+
+        <!-- Right Side (To) -->
+        <div>
+          <label for="to-input" class="form-label">To (Result)</label>
+          <input type="text" id="to-input" class="form-input" style="font-size: 1.25rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.5rem;" readonly>
+          <select id="to-unit" class="form-input"></select>
+        </div>
+      </div>
+
+      <!-- Formula Notice -->
+      <div style="background: var(--bg-surface); padding: 0.75rem 1.25rem; border-radius: var(--radius-sm); border: 1px solid var(--border-color); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.75rem;">
+        <span style="color: var(--text-muted);">Conversion Formula:</span>
+        <strong id="formula-display" style="font-family: monospace; color: var(--accent-violet);">--</strong>
+      </div>
+
+      <!-- All Units Breakdown Table -->
+      <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 0.75rem;">Complete Equivalent Values</h3>
+      <div style="overflow-x: auto; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.9rem;">
+          <thead>
+            <tr style="background: var(--bg-surface); text-align: left;">
+              <th style="padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase;">Unit</th>
+              <th style="padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; text-align: right;">Converted Value</th>
+            </tr>
+          </thead>
+          <tbody id="conversions-table-body">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Mid Content Ad Slot -->
+    <!-- Ad Network Integration: Paste your mid-article ad code below -->
+    <div class="ad-slot" data-slot="mid" aria-label="Advertisement"></div>
+
+    <!-- Comprehensive Editorial Guide -->
+    <article class="tool-guide">
+      <h2>Comprehensive Guide to Modern Unit Conversions</h2>
+      <p>Around the world, two prevailing measurement systems dictate engineering, science, commerce, and daily life: the International System of Units (SI or Metric) and the Imperial / US Customary System. While science, aviation, and medicine overwhelmingly rely on meters, grams, and Celsius, everyday consumer activities in nations like the United States and the United Kingdom frequently employ feet, pounds, and Fahrenheit.</p>
+      
+      <p>Nexora Tools' Universal Unit Converter bridges this divide effortlessly. By centralizing base unit factors, this tool allows engineers, students, culinary enthusiasts, and travelers to translate dimensions and temperatures in fractions of a second with exact floating-point precision.</p>
+
+      <h3>Step-by-Step Guide: How to Convert Units</h3>
+      <ol>
+        <li><strong>Select Your Category:</strong> Click on the category tab corresponding to your measurement need: Length & Distance, Weight & Mass, or Temperature.</li>
+        <li><strong>Enter the Input Value:</strong> Type any numerical amount into the "From" field. Negative numbers and decimal increments are fully supported.</li>
+        <li><strong>Select Source and Target Units:</strong> Choose your starting unit (such as Kilometers) and target unit (such as Miles). The result calculates automatically as you type.</li>
+        <li><strong>Swap with One Click:</strong> Need to reverse the calculation? Click the central swap button to toggle your source and destination units instantaneously.</li>
+        <li><strong>Inspect the Reference Table:</strong> Below the main workspace, view a full matrix displaying the equivalent value across every recognized unit within the category.</li>
+      </ol>
+
+      <h3>High-Precision Client-Side Calculations</h3>
+      <p>Unlike server-backed conversion portals that trigger unnecessary HTTP round trips, Nexora Tools performs 100% of the conversions directly on your device via client-side JavaScript. This delivers zero latency, offline readiness, and guaranteed privacy for your proprietary blueprints and formulas.</p>
+
+      <!-- FAQ Section -->
+      <h3 style="margin-top: 2rem;">Frequently Asked Questions</h3>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is the standard ratio between kilometers and miles?</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>One international mile is formally defined as exactly 1.609344 kilometers. Conversely, one kilometer corresponds to roughly 0.621371 miles.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>How do I convert Fahrenheit to Celsius manually?</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Subtract 32 from the Fahrenheit reading and multiply the result by 5/9 (or divide by 1.8). For instance, 68°F minus 32 equals 36; multiplied by 5/9 gives 20°C.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is the difference between mass and weight?</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>Mass represents the intrinsic quantity of matter in an object (measured in kilograms or grams), whereas weight is the force exerted on that mass by gravity. On Earth's surface, the terms are practically interchangeable in commercial measurements.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>What is the Stone unit used for?</span>
+          <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="faq-answer">
+          <p>The stone (st) is an imperial unit of mass equal to 14 pounds (approx. 6.35 kilograms), still widely used in the United Kingdom and Ireland for measuring human body weight.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- Related Tools Section -->
+    <section class="related-tools-section">
+      <h3 class="section-title">Related Calculators & Measurement Tools</h3>
+      <div class="tools-grid">
+        <div class="tool-card">
+          <div class="tool-icon-wrapper">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
+          <h3 class="tool-card-title">BMI Calculator</h3>
+          <p class="tool-card-desc">Calculate your Body Mass Index using metric or imperial measurements.</p>
+          <a href="bmi-calculator.html" class="tool-card-link">Calculate BMI &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon-wrapper">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="tool-card-title">Age Calculator</h3>
+          <p class="tool-card-desc">Calculate exact chronological age, next birthday, and total lifespan hours.</p>
+          <a href="age-calculator.html" class="tool-card-link">Calculate Age &rarr;</a>
+        </div>
+
+        <div class="tool-card">
+          <div class="tool-icon-wrapper">
+            <svg class="tool-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          </div>
+          <h3 class="tool-card-title">Word & Character Counter</h3>
+          <p class="tool-card-desc">Count words, characters, and analyze text metrics in real-time.</p>
+          <a href="word-counter.html" class="tool-card-link">Count Words &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Ad Slot -->
+    <!-- Ad Network Integration: Paste your bottom leaderboard ad code below -->
+    <div class="ad-slot" data-slot="bottom" aria-label="Advertisement"></div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="32" height="32" rx="8" fill="#8B5CF6"/>
+              <path d="M7 23L16 9L25 23H20L16 16.5L12 23H7Z" fill="#FFFFFF"/>
+            </svg>
+            <span>Nexora<span class="gradient-text">Tools</span></span>
+          </div>
+          <p class="footer-tagline">Fast, free and private online tools designed to simplify your digital everyday work. No data collection, ever.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Tools</h4>
+          <ul class="footer-links">
+            <li><a href="unit-converter.html">Unit Converter</a></li>
+            <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+            <li><a href="age-calculator.html">Age Calculator</a></li>
+            <li><a href="emi-calculator.html">EMI Calculator</a></li>
+            <li><a href="index.html">View All 14 Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Company</h4>
+          <ul class="footer-links">
+            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../contact.html">Contact Support</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-heading">Legal</h4>
+          <ul class="footer-links">
+            <li><a href="../privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="../terms.html">Terms of Use</a></li>
+            <li><a href="../disclaimer.html">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Nexora Tools. All rights reserved. 100% In-Browser Privacy Protected.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/tools/unit-converter.js"></script>
+</body>
+</html>

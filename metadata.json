@@ -1,0 +1,6 @@
+{
+  "name": "Nexora Tools",
+  "description": "Fast, free, and private online tools that process files and computations 100% locally in your browser.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
